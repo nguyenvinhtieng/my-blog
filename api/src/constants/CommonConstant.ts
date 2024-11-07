@@ -2,3 +2,16 @@ export const RUNTIME_MODE = {
   DEV: 'DEV',
   PRODUCTION: 'PRODUCTION'
 } as const
+
+export const EXPIRE_TOKEN = '1d'
+export const EXPIRE_REFRESH_TOKEN = '7d'
+
+export const HTTP_STATUS = {
+  OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500
+} as const
