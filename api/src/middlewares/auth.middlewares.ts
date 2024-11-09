@@ -9,21 +9,32 @@ const authMiddlewares = {
       // get bearer token from header
       const bearerToken = req.headers.authorization
       if (!bearerToken) {
-        return res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: 'Unauthorized' })
+        res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: 'Unauthorized' })
+        return
       }
 
       // get token from bearer token
       const token = bearerToken.split(' ')[1]
       if (!token) {
-        return res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: 'Unauthorized' })
+        res.status(HTTP_STATUS.UNAUTHORIZED).json({ message: 'Unauthorized' })
+        return
       }
 
       // verify token
-      const decoded: any = jwt.verify(token, JWT_SECRET)
+      const decoded = jwt.verify(token, JWT_SECRET)
+      if (typeof decoded === 'object') {
+        req.user = {
+          userId: decoded?.userId
+        }
+        next()
+        return
+      }
 
-      next()
+      res.status(HTTP_STATUS.UNAUTHORIZED).json({ message: 'Unauthorized' })
+      return
     } catch (_: unknown) {
-      return res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: 'Unauthorized' })
+      res.status(HTTP_STATUS.UNAUTHORIZED).json({ message: 'Unauthorized' })
+      return
     }
   }
 }

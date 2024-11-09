@@ -1,5 +1,6 @@
 import express from 'express'
 import { json } from 'body-parser'
+import cors from 'cors'
 import { PORT } from '@/configs/env.config'
 import { connectToDatabase } from '@/configs/mongodb.config'
 import logger from '@/utils/logger'
@@ -9,6 +10,11 @@ const app = express()
 
 // Middlewares for parsing JSON
 app.use(json())
+app.use(
+  cors({
+    origin: '*'
+  })
+)
 
 // Connect to MongoDB
 connectToDatabase()
