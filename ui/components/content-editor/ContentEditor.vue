@@ -43,6 +43,6 @@ useEditorProvider({
         placeholder: 'Write something, or type "/" for commands',
         suggestionKeys: ['/'],
         ...config.value,
-    },
+    }
 })
 </script>
