@@ -6,13 +6,13 @@
         :value="modelValue"
         @input="handleInput"
         :placeholder="placeholder"
-        class="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+        class="px-3 py-2 border rounded-md focus:outline-none focus:border-transparent"
         :class="inputClass"
       />
     </div>
   </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { defineProps, defineEmits } from 'vue';
   
   const props = defineProps<{
@@ -32,5 +32,5 @@
     const target = event.target as HTMLInputElement;
     emits('update:modelValue', target.value);
   };
-  </script>
+</script>
   

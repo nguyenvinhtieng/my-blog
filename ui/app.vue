@@ -1,5 +1,5 @@
 <template>
-  <main class="ml-auto mr-auto px-5">
+  <main>
     <NuxtPage />
   </main>
 </template>

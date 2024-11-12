@@ -6,4 +6,7 @@
   body {
     font-family: 'Montserrat', sans-serif;
   }
+  .page-container {
+    @apply max-w-[1600px] mx-auto px-4 w-full;
+  }
 }
